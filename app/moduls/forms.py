@@ -22,7 +22,7 @@ class RegistrationForm(FlaskForm):
 class AddArticleForm(FlaskForm):
     title = StringField('Название статьи', validators=[DataRequired()])
     description = TextAreaField('Описание статьи', validators=[DataRequired()])
-    file = FileField('Загрузить статью', validators=[DataRequired()], _name="file")
+    file = FileField('Загрузить статью', validators=[DataRequired()], name="file")
     submit = SubmitField('Создать')
 
 
@@ -35,6 +35,6 @@ class AddCourseForm(FlaskForm):
 class AddLessonForm(FlaskForm):
     title = StringField('Название курса', validators=[DataRequired()])
     link_video = StringField('Ссылка на видео', validators=[DataRequired()])
-    file_lesson = FileField('Загрузить текст урока', _name="file_lesson", validators=[DataRequired()])
-    file_homework = FileField('Загрузить домашнюю работу', _name="file_homework", validators=[DataRequired()])
+    file_lesson = FileField('Загрузить текст урока', name="file_lesson", validators=[DataRequired()])
+    file_homework = FileField('Загрузить домашнюю работу', name="file_homework", validators=[DataRequired()])
     submit = SubmitField('Создать')
