@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block main %}
+    <div class="card " >
+      <div class="card-body">
+        <h5 class="card-title">
+            {{ current_user.name }}
+        </h5>
+<!--           <p class="card-text"><b>{{ current_user.type_user }}</b></p>-->
+
+      </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Логин:</b> {{ current_user.login }}</li>
+          <li class="list-group-item"><b>Email:</b> {{ current_user.email }}</li>
+      </ul>
+         <div class="card-body">
+            <div class="d-grid gap-2 ">
+                {% if current_user.type_user == "логопед" %}
+                     <a href="{{ url_for('courses.showOnlyMyCourses') }}" class="btn btn-outline-primary">Мои курсы</a>
+                    <a href="{{ url_for('blog.showOnlyMyArticles') }}" class="btn btn-outline-primary">Мои статьи</a>
+                {% endif %}
+            </div>
+         </div>
+    </div>
+{% endblock %}

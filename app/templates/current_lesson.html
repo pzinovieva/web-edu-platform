@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}{{lessons.title}}{% endblock %}
+{% block main %}
+        <form class="p-3 mb-2 bg-light text-dark">
+             <div class="mb-3">
+                 <h4>{{lessons.title}}</h4>
+                 <small class="text-muted">Дата публикации: {{ lessons.created_date_str }}</small>
+             </div>
+
+            {% if current_user.login == course.user.login %}
+                <div class="mb-3">
+                    <a class="btn btn-outline-primary" href="{{ url_for('courses.showCurrentCourse', index_course=course.id) }}">
+                            Назад
+                    </a>
+                    <a class="btn btn-outline-danger" href="{{ url_for('courses.deleteLesson', index_course=course.id, index_lesson=lessons.id) }}">
+                        Удалить урок
+                    </a>
+                </div>
+            {% endif %}
+        </form>
+        <div class="card">
+            <div class="card-body">
+
+                <div class="mb-3">
+                <iframe width="100%" height="600" src='{{ lessons.link_video }}'></iframe>
+                </div>
+                <div class="p-3 mb-2 bg-light text-dark">
+                    <h5 class="card-title">Материалы урока</h5>
+                </div>
+                {{ lessons.content | safe }}
+                 <div class="p-3 mb-2 bg-light text-dark">
+                    <h5 class="card-title">Домашняя работа</h5>
+                 </div>
+
+                {{ lessons.content_homework | safe }}
+             </div>
+        </div>
+
+{% endblock %}

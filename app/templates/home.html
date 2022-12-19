@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block header %}
+    <div class="main-header">
+        <form action="">
+            {% if current_user.is_authenticated %}
+                <input class="btn" onClick="window.location.href='{{ url_for('home.start') }}'" type="button" value="Начать работу">
+            {% else %}
+                <input class="btn" onClick="window.location.href='{{ url_for('auth.login') }}'" type="button" value="Начать работу">
+            {% endif %}
+            <input class="btn" onClick="window.location.href='#section-about'" type="button" value="Узнать о проекте">
+        </form>
+    </div>
+{% endblock %}
+
+{% block main %}
+    <section id="section-about">
+        <div class="section-title">О проекте</div>
+        <div class="section-txt">
+            <b>ЛОГОПЕД.ОНЛАЙН</b> представляет собой платформу для занятий 
+            с детьми дошкольного возраста. <br>
+            Для педагогов доступны функции пополнения контента в 
+            блоге и создания собственных курсов.<br>
+            Родители и дети могут читать информацию и проходить курсы.
+            Весь функционал сайта будет доступен после <a href="{{ url_for('auth.login') }}">авторизации</a>.
+        </div>
+    </section>
+{% endblock %}

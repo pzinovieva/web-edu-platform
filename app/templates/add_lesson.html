@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block main %}
+    <div class="card border-light">
+        <div class="card-header text-center">
+            <h5>{{ title }}</h5>
+        </div>
+        <div class="card-body">
+        <form class="card-body row g-3"  method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="mb-3 row">
+            <div class="input-group">
+                {{ form.title(class="form-control", placeholder="Название урока") }}
+                {% for error in form.title.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+            </div>
+            </div>
+            <div class="mb-3 row">
+                <div class="input-group">
+                    {{ form.link_video(class="form-control", placeholder="Ссылка на видео урок") }}
+                    {% for error in form.link_video.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ error }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="mb-3 row">
+                    <div class="input-group">
+                        <label class="col-sm-3 col-form-label">Загрузить материалы урока</label>
+                        {{ form.file_lesson(class="form-control", type="file") }}
+                        {% for error in form.file_lesson.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    </div>
+            </div>
+            <div class="mb-3 row">
+                    <div class="input-group">
+                        <label class="col-sm-3 col-form-label">Загрузить домашнюю работу</label>
+                        {{ form.file_homework(class="form-control", type="file")}}
+                        {% for error in form.file_homework.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                    </div>
+            </div>
+
+            <div class="col-12">
+                    {{ form.submit(type="submit", class="btn btn-primary", value=btn_txt) }}
+                    <a class="btn btn-outline-secondary" href="{{ url_for('courses.showCurrentCourse', index_course=index_course) }}">
+                        Отмена
+                    </a>
+            </div>
+            {% if message %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endif %}
+        </form>
+        </div>
+    </div>
+{% endblock %}

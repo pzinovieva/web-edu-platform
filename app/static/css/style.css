@@ -1,0 +1,108 @@
+@font-face{
+    font-family: "Amatic SC Bold";
+    src: url("../fonts/AmaticSC-Bold.ttf");
+}
+@font-face{
+    font-family: "Inter-Medium";
+    src: url("../fonts/Inter-Medium.ttf");
+}
+
+body{
+    font-family: "Inter-Medium";
+}
+
+.logo{
+    font-family: 'Amatic SC Bold';
+    font-size: 50px;
+}
+
+header{
+    /* height: 77vh; */
+}
+
+main{
+    min-height: 79vh;
+}
+
+.main-header{
+    height: 78vh;
+    background: url("../img/background-header.jpeg"), rgba(255, 255, 255, 0.3);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-blend-mode: lighten;
+}
+
+.menu-elements-header>li>a{
+    text-transform: uppercase;
+    background-image: linear-gradient(to left, #ffaa2b, #eb6a37);
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+.menu-elements-header>li>a:hover{
+    background-size: 100% 2px;
+}
+
+.main-header>form{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.main-header>.slogan{
+    font-size: 50px;
+    text-align: center;
+    color: #000000;
+}
+
+.main-header>form>input{
+    margin: 1vw;
+    width: 300px;
+    height: 100px;
+    font-size: 20px;
+    text-transform: uppercase;
+    /* border: none;  */
+    color: rgb(255, 255, 255);
+    /* border: 2px solid #F64C2B; */
+    border-radius: 5px;
+    box-shadow: 0 0 0 60px rgba(0,0,0,0) inset, .1em .1em .2em #800;
+    background:#eb6a37;
+    transition: 0.2s;
+}
+
+.main-header>form>input:hover { background: #ffaa2b }
+.main-header>form>input:active { background: linear-gradient(#f59500, #f5ae00) #f59500; }
+
+
+section{
+    /* min-height: 5vh; */
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.section-title{
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    color: #8f8f8f;
+}
+
+@media (max-width: 1200px){
+    .main-header>form{
+        flex-direction: column;
+    }
+    .main-header>form>input{
+        width: 200px;
+        height: 50px;
+        font-size: 20px;
+    }
+}

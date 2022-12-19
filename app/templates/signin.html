@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Авторизация{% endblock %}
+
+{% block main %}
+        <div class="card border-light">
+            <div class="card-header text-center">
+                <h5>{% block title_auth %}Вход в личный кабинет{% endblock %}</h5>
+            </div>
+            <div class="card-body">
+            <form class="card-body row g-3"  method="POST" >
+                {{ form.hidden_tag() }}
+                <div class="mb-3 row">
+                <div class="input-group">
+                    {{ form.login(class="form-control", placeholder="Введите ваш логин", id="validationDefaultUsername") }}
+                    {% for error in form.login.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+                </div>
+                </div>
+
+                <div class="mb-3 row">
+                    <div class="input-group">
+                        {{ form.password(class="form-control", type="password", placeholder="Введите ваш пароль", id="inputPassword") }}
+                        {% for error in form.password.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ error }}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="col-12">
+                        {{ form.submit(type="submit", class="btn btn-primary") }}
+                </div>
+                {% if message %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                {% endif %}
+                    <div class="col-12">
+                        Если нет учетной записи, нужно <a class="link-primary" href="{{ url_for('auth.registration') }}">зарегистрироваться в системе</a>
+                    </div>
+            </form>
+            </div>
+        </div>
+{% endblock %}
